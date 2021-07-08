@@ -1,7 +1,7 @@
   
 name: "my-website"
 navbar:
-  title: "Joe Mushailov"
+  title: "Joe Mushailov's Personal Github Page"
   left:
     - text: "Home"
       href: index.html
