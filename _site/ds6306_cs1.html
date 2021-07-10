@@ -276,42 +276,41 @@ $(document).ready(function () {
 
 <div id="the-first-step-of-the-analysis-is-to-import-and-merge-the-breweries-data-with-beers-data-and-state-latlong-data." class="section level2">
 <h2>The first step of the analysis is to import and merge the breweries data with beers data and state lat/long data.</h2>
-</div>
-<div id="it-is-then-possible-to-view-the-top-and-bottom-6-values-in-the-new-merged-data." class="section level1">
-<h1>It is then possible to view the top and bottom 6 values in the new, merged data.</h1>
+<div id="it-is-then-possible-to-view-the-top-and-bottom-6-values-in-the-new-merged-data." class="section level3">
+<h3>It is then possible to view the top and bottom 6 values in the new, merged data.</h3>
 <pre><code>## # A tibble: 6 x 10
-##   Name                Beer_ID   ABV   IBU Brewery_id Style                          Ounces Brewery_Name              City  State
-##   &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                           &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt; &lt;chr&gt;
-## 1 Pub Beer               1436 0.05     NA        409 American Pale Lager                12 10 Barrel Brewing Company Bend  OR   
-## 2 Devil&#39;s Cup            2265 0.066    NA        178 American Pale Ale (APA)            12 18th Street Brewery       Gary  IN   
-## 3 Rise of the Phoenix    2264 0.071    NA        178 American IPA                       12 18th Street Brewery       Gary  IN   
-## 4 Sinister               2263 0.09     NA        178 American Double / Imperial IPA     12 18th Street Brewery       Gary  IN   
-## 5 Sex and Candy          2262 0.075    NA        178 American IPA                       12 18th Street Brewery       Gary  IN   
-## 6 Black Exodus           2261 0.077    NA        178 Oatmeal Stout                      12 18th Street Brewery       Gary  IN</code></pre>
+##   Name    Beer_ID   ABV   IBU Brewery_id Style  Ounces Brewery_Name  City  State
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;
+## 1 Pub Be~    1436 0.05     NA        409 Ameri~     12 10 Barrel Br~ Bend  OR   
+## 2 Devil&#39;~    2265 0.066    NA        178 Ameri~     12 18th Street ~ Gary  IN   
+## 3 Rise o~    2264 0.071    NA        178 Ameri~     12 18th Street ~ Gary  IN   
+## 4 Sinist~    2263 0.09     NA        178 Ameri~     12 18th Street ~ Gary  IN   
+## 5 Sex an~    2262 0.075    NA        178 Ameri~     12 18th Street ~ Gary  IN   
+## 6 Black ~    2261 0.077    NA        178 Oatme~     12 18th Street ~ Gary  IN</code></pre>
 <pre><code>## # A tibble: 6 x 10
-##   Name                        Beer_ID   ABV   IBU Brewery_id Style                    Ounces Brewery_Name            City   State
-##   &lt;chr&gt;                         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;                   &lt;chr&gt;  &lt;chr&gt;
-## 1 Rocky Mountain Oyster Stout    1035 0.075    NA        425 American Stout               12 Wynkoop Brewing Company Denver CO   
-## 2 Belgorado                       928 0.067    45        425 Belgian IPA                  12 Wynkoop Brewing Company Denver CO   
-## 3 Rail Yard Ale                   807 0.052    NA        425 American Amber / Red Ale     12 Wynkoop Brewing Company Denver CO   
-## 4 B3K Black Lager                 620 0.055    NA        425 Schwarzbier                  12 Wynkoop Brewing Company Denver CO   
-## 5 Silverback Pale Ale             145 0.055    40        425 American Pale Ale (APA)      12 Wynkoop Brewing Company Denver CO   
-## 6 Rail Yard Ale (2009)             84 0.052    NA        425 American Amber / Red Ale     12 Wynkoop Brewing Company Denver CO</code></pre>
+##   Name    Beer_ID   ABV   IBU Brewery_id Style   Ounces Brewery_Name City  State
+##   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt; &lt;chr&gt;
+## 1 Rocky ~    1035 0.075    NA        425 Americ~     12 Wynkoop Bre~ Denv~ CO   
+## 2 Belgor~     928 0.067    45        425 Belgia~     12 Wynkoop Bre~ Denv~ CO   
+## 3 Rail Y~     807 0.052    NA        425 Americ~     12 Wynkoop Bre~ Denv~ CO   
+## 4 B3K Bl~     620 0.055    NA        425 Schwar~     12 Wynkoop Bre~ Denv~ CO   
+## 5 Silver~     145 0.055    40        425 Americ~     12 Wynkoop Bre~ Denv~ CO   
+## 6 Rail Y~      84 0.052    NA        425 Americ~     12 Wynkoop Bre~ Denv~ CO</code></pre>
 </div>
-<div id="a-map-of-breweries-by-state-is-then-constructed-with-size-representing-number-of-breweries" class="section level1">
-<h1>A map of breweries by state is then constructed, with SIZE representing number of Breweries</h1>
-<div id="htmlwidget-04aa5cc9ff7fbf025f34" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-04aa5cc9ff7fbf025f34">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[61.3025006,32.6010112,34.7519275,34.1682185,37.2718745,38.9979339,41.5187835,38.8993487,39.145251,27.9757279,32.6781248,20.46,41.9383166,45.4945756,39.739318,39.7662195,38.4987789,37.8222935,30.9733766,42.0629398,38.8063524,45.2185133,44.9435598,46.4418595,38.3046615,32.5851062,46.6797995,35.2145629,47.4678819,41.5008195,44.0012306,40.1430058,34.1662325,38.502032,40.7056258,40.1903624,35.3097654,44.1419049,40.9945928,41.5827282,33.62505,44.2126995,35.830521,31.1693363,39.4997605,38.0033855,43.8717545,38.8993487,44.7862968,38.9201705,43.000325],[-158.7750198,-86.6807365,-92.1313784,-111.930907,-119.2704153,-105.550567,-72.757507,-77.0145666,-75.4189206,-81.8330166,-83.2229757,-157.505,-93.389798,-114.1424303,-89.504139,-86.441277,-98.3200779,-85.7682399,-91.4299097,-71.718067,-77.2684162,-69.0148656,-86.4158049,-93.3655146,-92.437099,-89.8772196,-110.044783,-79.8912675,-100.3022655,-99.680902,-71.5799231,-74.7311156,-106.0260685,-117.0230604,-73.97968,-82.6692525,-98.7165585,-120.5380993,-77.6046984,-71.5064508,-80.9470381,-100.2471641,-85.9785989,-100.0768425,-111.547028,-79.4587861,-72.4477828,-77.0145665,-89.8267049,-80.1816905,-107.5545669],[7,3,2,11,39,47,8,1,2,15,7,4,5,5,18,22,3,4,5,23,7,9,32,12,9,2,9,19,1,5,3,3,4,2,16,15,6,29,25,5,4,1,3,28,4,16,10,23,20,1,4],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[20.46,61.3025006],"lng":[-158.7750198,-69.0148656]}},"evals":[],"jsHooks":[]}</script>
+<div id="a-map-of-breweries-by-state-is-then-constructed-with-size-representing-number-of-breweries" class="section level3">
+<h3>A map of breweries by state is then constructed, with SIZE representing number of Breweries</h3>
+<div id="htmlwidget-734dc3dcf4e51bdb6584" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-734dc3dcf4e51bdb6584">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[61.3025006,32.6010112,34.7519275,34.1682185,37.2718745,38.9979339,41.5187835,38.8993487,39.145251,27.9757279,32.6781248,20.46,41.9383166,45.4945756,39.739318,39.7662195,38.4987789,37.8222935,30.9733766,42.0629398,38.8063524,45.2185133,44.9435598,46.4418595,38.3046615,32.5851062,46.6797995,35.2145629,47.4678819,41.5008195,44.0012306,40.1430058,34.1662325,38.502032,40.7056258,40.1903624,35.3097654,44.1419049,40.9945928,41.5827282,33.62505,44.2126995,35.830521,31.1693363,39.4997605,38.0033855,43.8717545,38.8993487,44.7862968,38.9201705,43.000325],[-158.7750198,-86.6807365,-92.1313784,-111.930907,-119.2704153,-105.550567,-72.757507,-77.0145666,-75.4189206,-81.8330166,-83.2229757,-157.505,-93.389798,-114.1424303,-89.504139,-86.441277,-98.3200779,-85.7682399,-91.4299097,-71.718067,-77.2684162,-69.0148656,-86.4158049,-93.3655146,-92.437099,-89.8772196,-110.044783,-79.8912675,-100.3022655,-99.680902,-71.5799231,-74.7311156,-106.0260685,-117.0230604,-73.97968,-82.6692525,-98.7165585,-120.5380993,-77.6046984,-71.5064508,-80.9470381,-100.2471641,-85.9785989,-100.0768425,-111.547028,-79.4587861,-72.4477828,-77.0145665,-89.8267049,-80.1816905,-107.5545669],[7,3,2,11,39,47,8,1,2,15,7,4,5,5,18,22,3,4,5,23,7,9,32,12,9,2,9,19,1,5,3,3,4,2,16,15,6,29,25,5,4,1,3,28,4,16,10,23,20,1,4],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[20.46,61.3025006],"lng":[-158.7750198,-69.0148656]}},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="a-histogram-is-also-built-to-show-breweries-by-state-with-a-clearer-depiction-of-absolute-number-of-breweries-by-state" class="section level1">
-<h1>A histogram is also built to show breweries by state, with a clearer depiction of absolute number of breweries by state</h1>
+<div id="a-histogram-is-also-built-to-show-breweries-by-state-with-a-clearer-depiction-of-absolute-number-of-breweries-by-state" class="section level3">
+<h3>A histogram is also built to show breweries by state, with a clearer depiction of absolute number of breweries by state</h3>
 <p><img src="ds6306_cs1_files/figure-html/Histogram%20of%20Breweries%20by%20State-1.png" width="672" /></p>
+</div>
+</div>
 <div id="an-important-part-of-data-analysis-is-checking-for-columns-with-missing-values-nas.-below-shows-that-only-abv-ibu-and-style-data-has-missing-values." class="section level2">
 <h2>An important part of data analysis is checking for columns with missing values (NAs). Below shows that only ABV, IBU and Style data # has missing values.</h2>
-</div>
-</div>
-<div id="the-style-column-only-has-5-missing-values-so-they-are-replaced-with-unknown" class="section level1">
-<h1>The Style column only has 5 missing values, so they are replaced with “Unknown”</h1>
+<div id="the-style-column-only-has-5-missing-values-so-they-are-replaced-with-unknown" class="section level3">
+<h3>The Style column only has 5 missing values, so they are replaced with “Unknown”</h3>
 <pre><code>## [1] &quot;&quot;
 ## [1] &quot;&quot;
 ## [1] &quot;has NA&quot;
@@ -333,7 +332,9 @@ $(document).ready(function () {
 ## Brewery_Name                         
 ## City                                 
 ## State</code></pre>
-<p>Checking basic regressions to see if imputation of ABV / IBU is possible using the other.</p>
+</div>
+<div id="checking-basic-regressions-to-see-if-imputation-of-abv-ibu-is-possible-using-the-other." class="section level3">
+<h3>Checking basic regressions to see if imputation of ABV / IBU is possible using the other.</h3>
 <pre><code>## 
 ## Call:
 ## lm(formula = IBU ~ ABV, data = df)
@@ -373,41 +374,41 @@ $(document).ready(function () {
 ## Multiple R-squared:  0.4497, Adjusted R-squared:  0.4493 
 ## F-statistic:  1147 on 1 and 1403 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div id="the-below-graphs-show-the-median-ibu-and-abv-by-state.-ibu-has-some-differences-among-states-but-since-median-abv-is-pretty-similar-among-statesthe-graph-forms-a-long-plateau." class="section level1">
-<h1>The below graphs show the median IBU and ABV by state. IBU has some differences among states, but since median ABV is pretty similar #among states,the graph forms a long plateau.</h1>
+<div id="the-below-graphs-show-the-median-ibu-and-abv-by-state.-ibu-has-some-differences-among-states-but-since-median-abv-is-pretty-similar-among-statesthe-graph-forms-a-long-plateau." class="section level3">
+<h3>The below graphs show the median IBU and ABV by state. IBU has some differences among states, but since median ABV is pretty similar #among states,the graph forms a long plateau.</h3>
 <p><img src="ds6306_cs1_files/figure-html/Medians%20Plotting-1.png" width="672" /><img src="ds6306_cs1_files/figure-html/Medians%20Plotting-2.png" width="672" /></p>
 </div>
-<div id="medians-are-a-great-way-to-observe-abv-ibu-by-state-but-finding-the-maximum-abv-ibu-beers-can-also-be-valuable." class="section level1">
-<h1>Medians are a great way to observe ABV &amp; IBU by state, but finding the maximum ABV &amp; IBU beers can also be valuable.</h1>
+<div id="medians-are-a-great-way-to-observe-abv-ibu-by-state-but-finding-the-maximum-abv-ibu-beers-can-also-be-valuable." class="section level3">
+<h3>Medians are a great way to observe ABV &amp; IBU by state, but finding the maximum ABV &amp; IBU beers can also be valuable.</h3>
 <pre><code>## [1] &quot;State with the maximum alcoholic beer: CO, with an alcohol percentage of 12.8%&quot;</code></pre>
 <pre><code>## [1] &quot;State with the maximum bitterness: OR, with an IBU of 138&quot;</code></pre>
-<div id="observing-the-distribution-of-abv-it-can-be-seen-that-most-abv-fall-into-the-5-6-range." class="section level2">
-<h2>Observing the distribution of ABV, it can be seen that most ABV fall into the 5-6% range.</h2>
 </div>
-<div id="furthermore-there-seems-to-be-a-pretty-strong-relationship-between-abv-and-ibu.-this-is-most-likely-because" class="section level2">
-<h2>Furthermore, there seems to be a pretty strong relationship between ABV and IBU. This is most likely because</h2>
+<div id="observing-the-distribution-of-abv-it-can-be-seen-that-most-abv-fall-into-the-5-6-range." class="section level3">
+<h3>Observing the distribution of ABV, it can be seen that most ABV fall into the 5-6% range.</h3>
 </div>
-<div id="higher-concentrations-of-ingredients-such-as-hops-are-needed-to-produce-higher-alcohol-beers-resulting-in-higher-alcohol-and-higher-bitterness." class="section level2">
-<h2>higher concentrations of ingredients (such as hops) are needed to produce higher alcohol beers, resulting in higher alcohol and higher bitterness.</h2>
+<div id="furthermore-there-seems-to-be-a-pretty-strong-relationship-between-abv-and-ibu.-this-is-most-likely-because" class="section level3">
+<h3>Furthermore, there seems to be a pretty strong relationship between ABV and IBU. This is most likely because</h3>
 </div>
+<div id="higher-concentrations-of-ingredients-such-as-hops-are-needed-to-produce-higher-alcohol-beers-resulting-in-higher-alcohol-and-higher-bitterness." class="section level3">
+<h3>higher concentrations of ingredients (such as hops) are needed to produce higher alcohol beers, resulting in higher alcohol and higher bitterness.</h3>
 </div>
-<div id="this-strong-relationship-allows-for-the-construction-of-a-prediction-engine-to-predict-ibu-given-abv-which-will-be-shown-at-the-end-of-the-document." class="section level1">
-<h1>This strong relationship allows for the construction of a prediction engine to predict IBU given ABV, which will be shown at the end of the document.</h1>
+<div id="this-strong-relationship-allows-for-the-construction-of-a-prediction-engine-to-predict-ibu-given-abv-which-will-be-shown-at-the-end-of-the-document." class="section level3">
+<h3>This strong relationship allows for the construction of a prediction engine to predict IBU given ABV, which will be shown at the end of the document.</h3>
 <p><img src="ds6306_cs1_files/figure-html/Distributions%20and%20Relationship-1.png" width="672" /><img src="ds6306_cs1_files/figure-html/Distributions%20and%20Relationship-2.png" width="672" /><img src="ds6306_cs1_files/figure-html/Distributions%20and%20Relationship-3.png" width="672" /></p>
 </div>
-<div id="this-word-cloud-shows-the-most-common-words-in-beer-names.-it-is-an-interesting-graphic-showing-how-popular-ipa-is-in-the-name-of-a-beer." class="section level1">
-<h1>This word cloud shows the most common words in beer names. It is an interesting graphic showing how popular IPA is in the name of a # beer.</h1>
+<div id="this-word-cloud-shows-the-most-common-words-in-beer-names.-it-is-an-interesting-graphic-showing-how-popular-ipa-is-in-the-name-of-a-beer." class="section level3">
+<h3>This word cloud shows the most common words in beer names. It is an interesting graphic showing how popular IPA is in the name of a # beer.</h3>
 <p><img src="ds6306_cs1_files/figure-html/Simple%20Wordcloud%20of%20Beer%20Names!-1.png" width="672" /></p>
+</div>
+</div>
 <div id="since-ipas-generally-have-high-hop-contents-and-relatively-high-alcoholic-content-it-is-possible-to-predict-whether-a-beer-is-an-ipa-given-abv-and-ibu." class="section level2">
 <h2>Since IPAs generally have high hop contents and relatively high alcoholic content, it is possible to predict whether a beer is an IPA given ABV and IBU.</h2>
 </div>
 <div id="leveraging-a-machine-learning-algorithm-called-k-nearest-neighbors-the-results-are-promising---nearly-a-99-prediction-accuracy." class="section level2">
 <h2>Leveraging a machine learning algorithm called “K Nearest Neighbors,” the results are promising - nearly a 99% prediction accuracy.</h2>
-</div>
-</div>
-<div id="the-knn-k-nearest-neighbors-algorithm-looks-at-the-k-closest-points-to-a-new-point" class="section level1">
-<h1>The KNN (K Nearest Neighbors) algorithm looks at the ‘k’ closest points to a new point</h1>
-<p>#‘K’ is specified by the analyst and different values of ‘k’ can have different results # New data points are evaluated by the class of the points closest to them # The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k. # The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs <img src="ds6306_cs1_files/figure-html/KNN%20Prediction%20of%20IPA-1.png" width="672" /></p>
+<div id="the-knn-k-nearest-neighbors-algorithm-looks-at-the-k-closest-points-to-a-new-point" class="section level3">
+<h3>The KNN (K Nearest Neighbors) algorithm looks at the ‘k’ closest points to a new point</h3>
+<p>###‘K’ is specified by the analyst and different values of ‘k’ can have different results ### New data points are evaluated by the class of the points closest to them ### The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k. ### The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs <img src="ds6306_cs1_files/figure-html/KNN%20Prediction%20of%20IPA-1.png" width="672" /></p>
 <pre><code>## [1] &quot;Confusion Matrix of Ale Classification&quot;</code></pre>
 <pre><code>## Confusion Matrix and Statistics
 ## 
@@ -436,27 +437,27 @@ $(document).ready(function () {
 ##                                           
 ##        &#39;Positive&#39; Class : 0               
 ## </code></pre>
+</div>
+</div>
 <div id="since-ales-generally-have-high-hop-contents-and-relatively-high-alcoholic-content-it-is-possible-to-predict-whether-a-beer-is-an-ale-given-abv-and-ibu." class="section level2">
 <h2>Since Ales generally have high hop contents and relatively high alcoholic content, it is possible to predict whether a beer is an Ale given ABV and IBU.</h2>
 </div>
 <div id="leveraging-a-machine-learning-algorithm-called-k-nearest-neighbors-the-results-are-promising---nearly-a-99-prediction-accuracy.-1" class="section level2">
 <h2>Leveraging a machine learning algorithm called “K Nearest Neighbors,” the results are promising - nearly a 99% prediction accuracy.</h2>
+<div id="the-knn-k-nearest-neighbors-algorithm-looks-at-the-k-closest-points-to-a-new-point-1" class="section level3">
+<h3>The KNN (K Nearest Neighbors) algorithm looks at the ‘k’ closest points to a new point</h3>
 </div>
+<div id="k-is-specified-by-the-analyst-and-different-values-of-k-can-have-different-results" class="section level3">
+<h3>‘K’ is specified by the analyst and different values of ‘k’ can have different results</h3>
 </div>
-<div id="the-knn-k-nearest-neighbors-algorithm-looks-at-the-k-closest-points-to-a-new-point-1" class="section level1">
-<h1>The KNN (K Nearest Neighbors) algorithm looks at the ‘k’ closest points to a new point</h1>
+<div id="new-data-points-are-evaluated-by-the-class-of-the-points-closest-to-them" class="section level3">
+<h3>New data points are evaluated by the class of the points closest to them</h3>
 </div>
-<div id="k-is-specified-by-the-analyst-and-different-values-of-k-can-have-different-results" class="section level1">
-<h1>‘K’ is specified by the analyst and different values of ‘k’ can have different results</h1>
+<div id="the-graph-ostensibly-shows-how-many-similar-points-each-new-beer-must-be-compared-to-to-generate-a-prediction-k-and-the-accuracy-of-each-k." class="section level3">
+<h3>The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k.</h3>
 </div>
-<div id="new-data-points-are-evaluated-by-the-class-of-the-points-closest-to-them" class="section level1">
-<h1>New data points are evaluated by the class of the points closest to them</h1>
-</div>
-<div id="the-graph-ostensibly-shows-how-many-similar-points-each-new-beer-must-be-compared-to-to-generate-a-prediction-k-and-the-accuracy-of-each-k." class="section level1">
-<h1>The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k.</h1>
-</div>
-<div id="the-fact-that-knn-predicts-both-ipa-and-ales-very-strongly-shows-that-there-is-a-different-in-ibuabv-values-for-ales-and-ipas" class="section level1">
-<h1>The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs</h1>
+<div id="the-fact-that-knn-predicts-both-ipa-and-ales-very-strongly-shows-that-there-is-a-different-in-ibuabv-values-for-ales-and-ipas" class="section level3">
+<h3>The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs</h3>
 <p><img src="ds6306_cs1_files/figure-html/KNN%20Prediction%20of%20Ales%20That%20Are%20Not%20IPA-1.png" width="672" /></p>
 <pre><code>## [1] &quot;Confusion Matrix of Ale Classification&quot;</code></pre>
 <pre><code>## Confusion Matrix and Statistics
@@ -486,24 +487,24 @@ $(document).ready(function () {
 ##                                           
 ##        &#39;Positive&#39; Class : 0               
 ## </code></pre>
+</div>
+</div>
 <div id="almost-42-of-all-beers-are-missing-an-ibu-value" class="section level2">
 <h2>Almost 42% of all beers are missing an IBU value</h2>
+<div id="using-machine-learning-techniques-it-is-possible-to-build-an-automated-prediction-engine-based-on-beer-type-abv-and-location." class="section level3">
+<h3>Using machine learning techniques, it is possible to build an automated prediction engine, based on beer type, ABV and location.</h3>
 </div>
+<div id="the-process-leverages-multiple-machine-learning-algorithms-and-compares-the-results-at-the-end.-the-model-with-the-best-explanatory-power" class="section level3">
+<h3>The process leverages multiple machine learning algorithms and compares the results at the end. The model with the best explanatory power</h3>
 </div>
-<div id="using-machine-learning-techniques-it-is-possible-to-build-an-automated-prediction-engine-based-on-beer-type-abv-and-location." class="section level1">
-<h1>Using machine learning techniques, it is possible to build an automated prediction engine, based on beer type, ABV and location.</h1>
+<div id="is-then-chosen-to-predict-the-missing-ibu-values." class="section level3">
+<h3>is then chosen to predict the missing IBU values.</h3>
 </div>
-<div id="the-process-leverages-multiple-machine-learning-algorithms-and-compares-the-results-at-the-end.-the-model-with-the-best-explanatory-power" class="section level1">
-<h1>The process leverages multiple machine learning algorithms and compares the results at the end. The model with the best explanatory power</h1>
-</div>
-<div id="is-then-chosen-to-predict-the-missing-ibu-values." class="section level1">
-<h1>is then chosen to predict the missing IBU values.</h1>
-</div>
-<div id="after-each-model-a-predicted-vs.-actual-scatter-plot-is-provided-to-show-how-well-the-model-predicts-values." class="section level1">
-<h1>After each model, a predicted vs. actual scatter plot is provided to show how well the model predicts values.</h1>
+<div id="after-each-model-a-predicted-vs.-actual-scatter-plot-is-provided-to-show-how-well-the-model-predicts-values." class="section level3">
+<h3>After each model, a predicted vs. actual scatter plot is provided to show how well the model predicts values.</h3>
 <p><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-1.png" width="672" /><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-2.png" width="672" /><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-3.png" width="672" /></p>
 <pre><code>##    user  system elapsed 
-##   26.19    1.15   27.36</code></pre>
+##   27.45    1.16   28.64</code></pre>
 <p><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-4.png" width="672" /></p>
 <pre><code>## Bootstrap sampling is being applied, p=0.1 argument is ignored 
 ## running: regression cross-validation with 10 iterations 
@@ -529,35 +530,39 @@ $(document).ready(function () {
 ## RMSE cross-validation error variance = 0.1684925 
 ## MBE cross-validation error variance = 0.2296594 
 ## MAE cross-validation error variance = 0.03790809</code></pre>
-<pre><code>## [14:21:09] INFO: amalgamation/../src/tree/updater_prune.cc:101: tree pruning end, 46 extra nodes, 0 pruned nodes, max_depth=8
+<pre><code>## [14:28:30] INFO: amalgamation/../src/tree/updater_prune.cc:101: tree pruning end, 46 extra nodes, 0 pruned nodes, max_depth=8
 ## [1]  train-rmse:12.566269 
-## [14:21:09] INFO: amalgamation/../src/tree/updater_prune.cc:101: tree pruning end, 528 extra nodes, 0 pruned nodes, max_depth=20
+## [14:28:30] INFO: amalgamation/../src/tree/updater_prune.cc:101: tree pruning end, 528 extra nodes, 0 pruned nodes, max_depth=20
 ## [2]  train-rmse:10.206293</code></pre>
 <p><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-5.png" width="672" /></p>
-<div id="final-accuracies.-rmse-is-how-much-the-average-prediction-is-off-by." class="section level3">
-<h3>Final accuracies. RMSE Is how much the average prediction is “off” by.</h3>
-</div>
-<div id="the-random-forest-is-chosen-as-the-optimal-model." class="section level2">
-<h2>The Random Forest is chosen as the optimal model.</h2>
 </div>
 </div>
-<div id="the-random-forest-is-an-ensemble-model-that-at-least-in-some-ways-mimics-the-classic-adage-of-wisdom-of-crowds." class="section level1">
-<h1>The random forest is an ensemble model that, at least in some ways, mimics the classic adage of “Wisdom of Crowds.”</h1>
+<div id="final-accuracies.-rmse-is-how-much-the-average-prediction-is-off-by." class="section level2">
+<h2>Final accuracies. RMSE Is how much the average prediction is “off” by.</h2>
+<div id="the-random-forest-is-chosen-as-the-optimal-model." class="section level3">
+<h3>The Random Forest is chosen as the optimal model.</h3>
 </div>
-<div id="a-random-forest-is-a-collection-of-decision-trees-each-one-being-trained-on-a-different-bootstrap-sample-of-data-or-a-random-sample-with-replacement." class="section level1">
-<h1>A random forest is a collection of decision trees, each one being trained on a different “Bootstrap Sample” of data, or a random sample with replacement.</h1>
+<div id="the-random-forest-is-an-ensemble-model-that-at-least-in-some-ways-mimics-the-classic-adage-of-wisdom-of-crowds." class="section level3">
+<h3>The random forest is an ensemble model that, at least in some ways, mimics the classic adage of “Wisdom of Crowds.”</h3>
 </div>
-<div id="additionally-at-each-bootstrap-sample-a-subset-of-features-can-be-selected." class="section level1">
-<h1>Additionally, at each bootstrap sample, a subset of features can be selected.</h1>
+<div id="a-random-forest-is-a-collection-of-decision-trees-each-one-being-trained-on-a-different-bootstrap-sample-of-data-or-a-random-sample-with-replacement." class="section level3">
+<h3>A random forest is a collection of decision trees, each one being trained on a different “Bootstrap Sample” of data, or a random sample with replacement.</h3>
 </div>
-<div id="so-at-each-decision-tree-a-random-sample-of-rows-and-columns-is-selected-and-a-model-is-built." class="section level1">
-<h1>So at each decision tree, a random sample of rows AND columns is selected and a model is built.</h1>
+<div id="additionally-at-each-bootstrap-sample-a-subset-of-features-can-be-selected." class="section level3">
+<h3>Additionally, at each bootstrap sample, a subset of features can be selected.</h3>
 </div>
-<div id="each-trees-output-is-then-averaged-to-make-a-final-prediction." class="section level1">
-<h1>Each tree’s output is then averaged to make a final prediction.</h1>
+<div id="so-at-each-decision-tree-a-random-sample-of-rows-and-columns-is-selected-and-a-model-is-built." class="section level3">
+<h3>So at each decision tree, a random sample of rows AND columns is selected and a model is built.</h3>
+</div>
+<div id="each-trees-output-is-then-averaged-to-make-a-final-prediction." class="section level3">
+<h3>Each tree’s output is then averaged to make a final prediction.</h3>
 <pre><code>##    xg_rmse  rf_rmse  lm_rmse noskill_rmse
 ## 1 10.03874 9.586835 9.628729     21.34206</code></pre>
-<p>Using the optimal model (Random Forest) to predict all NA’s in the original IBU data <img src="ds6306_cs1_files/figure-html/Predictions-1.png" width="672" /></p>
+</div>
+<div id="using-the-optimal-model-random-forest-to-predict-all-nas-in-the-original-ibu-data" class="section level3">
+<h3>Using the optimal model (Random Forest) to predict all NA’s in the original IBU data</h3>
+<p><img src="ds6306_cs1_files/figure-html/Predictions-1.png" width="672" /></p>
+</div>
 </div>
 
 
