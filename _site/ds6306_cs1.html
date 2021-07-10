@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>ds6306_cs1.knit</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-binding-2.0.4.1/leaflet.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Joe's Github Page</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home Page</a>
+</li>
+<li>
+  <a href="about.html">About Me</a>
+</li>
+<li>
+  <a href="ds6306_cs1.html">Case Study 1</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+
+</div>
+
+
+<div id="the-first-step-of-the-analysis-is-to-import-and-merge-the-breweries-data-with-beers-data-and-state-latlong-data." class="section level2">
+<h2>The first step of the analysis is to import and merge the breweries data with beers data and state lat/long data.</h2>
+</div>
+<div id="it-is-then-possible-to-view-the-top-and-bottom-6-values-in-the-new-merged-data." class="section level1">
+<h1>It is then possible to view the top and bottom 6 values in the new, merged data.</h1>
+<pre><code>## # A tibble: 6 x 10
+##   Name                Beer_ID   ABV   IBU Brewery_id Style                          Ounces Brewery_Name              City  State
+##   &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                           &lt;dbl&gt; &lt;chr&gt;                     &lt;chr&gt; &lt;chr&gt;
+## 1 Pub Beer               1436 0.05     NA        409 American Pale Lager                12 10 Barrel Brewing Company Bend  OR   
+## 2 Devil&#39;s Cup            2265 0.066    NA        178 American Pale Ale (APA)            12 18th Street Brewery       Gary  IN   
+## 3 Rise of the Phoenix    2264 0.071    NA        178 American IPA                       12 18th Street Brewery       Gary  IN   
+## 4 Sinister               2263 0.09     NA        178 American Double / Imperial IPA     12 18th Street Brewery       Gary  IN   
+## 5 Sex and Candy          2262 0.075    NA        178 American IPA                       12 18th Street Brewery       Gary  IN   
+## 6 Black Exodus           2261 0.077    NA        178 Oatmeal Stout                      12 18th Street Brewery       Gary  IN</code></pre>
+<pre><code>## # A tibble: 6 x 10
+##   Name                        Beer_ID   ABV   IBU Brewery_id Style                    Ounces Brewery_Name            City   State
+##   &lt;chr&gt;                         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                     &lt;dbl&gt; &lt;chr&gt;                   &lt;chr&gt;  &lt;chr&gt;
+## 1 Rocky Mountain Oyster Stout    1035 0.075    NA        425 American Stout               12 Wynkoop Brewing Company Denver CO   
+## 2 Belgorado                       928 0.067    45        425 Belgian IPA                  12 Wynkoop Brewing Company Denver CO   
+## 3 Rail Yard Ale                   807 0.052    NA        425 American Amber / Red Ale     12 Wynkoop Brewing Company Denver CO   
+## 4 B3K Black Lager                 620 0.055    NA        425 Schwarzbier                  12 Wynkoop Brewing Company Denver CO   
+## 5 Silverback Pale Ale             145 0.055    40        425 American Pale Ale (APA)      12 Wynkoop Brewing Company Denver CO   
+## 6 Rail Yard Ale (2009)             84 0.052    NA        425 American Amber / Red Ale     12 Wynkoop Brewing Company Denver CO</code></pre>
+</div>
+<div id="a-map-of-breweries-by-state-is-then-constructed-with-size-representing-number-of-breweries" class="section level1">
+<h1>A map of breweries by state is then constructed, with SIZE representing number of Breweries</h1>
+<div id="htmlwidget-04aa5cc9ff7fbf025f34" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-04aa5cc9ff7fbf025f34">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircleMarkers","args":[[61.3025006,32.6010112,34.7519275,34.1682185,37.2718745,38.9979339,41.5187835,38.8993487,39.145251,27.9757279,32.6781248,20.46,41.9383166,45.4945756,39.739318,39.7662195,38.4987789,37.8222935,30.9733766,42.0629398,38.8063524,45.2185133,44.9435598,46.4418595,38.3046615,32.5851062,46.6797995,35.2145629,47.4678819,41.5008195,44.0012306,40.1430058,34.1662325,38.502032,40.7056258,40.1903624,35.3097654,44.1419049,40.9945928,41.5827282,33.62505,44.2126995,35.830521,31.1693363,39.4997605,38.0033855,43.8717545,38.8993487,44.7862968,38.9201705,43.000325],[-158.7750198,-86.6807365,-92.1313784,-111.930907,-119.2704153,-105.550567,-72.757507,-77.0145666,-75.4189206,-81.8330166,-83.2229757,-157.505,-93.389798,-114.1424303,-89.504139,-86.441277,-98.3200779,-85.7682399,-91.4299097,-71.718067,-77.2684162,-69.0148656,-86.4158049,-93.3655146,-92.437099,-89.8772196,-110.044783,-79.8912675,-100.3022655,-99.680902,-71.5799231,-74.7311156,-106.0260685,-117.0230604,-73.97968,-82.6692525,-98.7165585,-120.5380993,-77.6046984,-71.5064508,-80.9470381,-100.2471641,-85.9785989,-100.0768425,-111.547028,-79.4587861,-72.4477828,-77.0145665,-89.8267049,-80.1816905,-107.5545669],[7,3,2,11,39,47,8,1,2,15,7,4,5,5,18,22,3,4,5,23,7,9,32,12,9,2,9,19,1,5,3,3,4,2,16,15,6,29,25,5,4,1,3,28,4,16,10,23,20,1,4],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[20.46,61.3025006],"lng":[-158.7750198,-69.0148656]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="a-histogram-is-also-built-to-show-breweries-by-state-with-a-clearer-depiction-of-absolute-number-of-breweries-by-state" class="section level1">
+<h1>A histogram is also built to show breweries by state, with a clearer depiction of absolute number of breweries by state</h1>
+<p><img src="ds6306_cs1_files/figure-html/Histogram%20of%20Breweries%20by%20State-1.png" width="672" /></p>
+<div id="an-important-part-of-data-analysis-is-checking-for-columns-with-missing-values-nas.-below-shows-that-only-abv-ibu-and-style-data-has-missing-values." class="section level2">
+<h2>An important part of data analysis is checking for columns with missing values (NAs). Below shows that only ABV, IBU and Style data # has missing values.</h2>
+</div>
+</div>
+<div id="the-style-column-only-has-5-missing-values-so-they-are-replaced-with-unknown" class="section level1">
+<h1>The Style column only has 5 missing values, so they are replaced with “Unknown”</h1>
+<pre><code>## [1] &quot;&quot;
+## [1] &quot;&quot;
+## [1] &quot;has NA&quot;
+## [1] &quot;has NA&quot;
+## [1] &quot;&quot;
+## [1] &quot;has NA&quot;
+## [1] &quot;&quot;
+## [1] &quot;&quot;
+## [1] &quot;&quot;
+## [1] &quot;&quot;</code></pre>
+<pre><code>##              sapply.df..function.x...
+## Name                                 
+## Beer_ID                              
+## ABV                            has NA
+## IBU                            has NA
+## Brewery_id                           
+## Style                          has NA
+## Ounces                               
+## Brewery_Name                         
+## City                                 
+## State</code></pre>
+<p>Checking basic regressions to see if imputation of ABV / IBU is possible using the other.</p>
+<pre><code>## 
+## Call:
+## lm(formula = IBU ~ ABV, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -78.849 -11.977  -0.721  13.997  93.458 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -34.099      2.326  -14.66   &lt;2e-16 ***
+## ABV         1282.037     37.860   33.86   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 19.26 on 1403 degrees of freedom
+##   (1005 observations deleted due to missingness)
+## Multiple R-squared:  0.4497, Adjusted R-squared:  0.4493 
+## F-statistic:  1147 on 1 and 1403 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = ABV ~ IBU, data = df)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.033288 -0.005946 -0.001595  0.004022  0.052006 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 4.493e-02  5.177e-04   86.79   &lt;2e-16 ***
+## IBU         3.508e-04  1.036e-05   33.86   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.01007 on 1403 degrees of freedom
+##   (1005 observations deleted due to missingness)
+## Multiple R-squared:  0.4497, Adjusted R-squared:  0.4493 
+## F-statistic:  1147 on 1 and 1403 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="the-below-graphs-show-the-median-ibu-and-abv-by-state.-ibu-has-some-differences-among-states-but-since-median-abv-is-pretty-similar-among-statesthe-graph-forms-a-long-plateau." class="section level1">
+<h1>The below graphs show the median IBU and ABV by state. IBU has some differences among states, but since median ABV is pretty similar #among states,the graph forms a long plateau.</h1>
+<p><img src="ds6306_cs1_files/figure-html/Medians%20Plotting-1.png" width="672" /><img src="ds6306_cs1_files/figure-html/Medians%20Plotting-2.png" width="672" /></p>
+</div>
+<div id="medians-are-a-great-way-to-observe-abv-ibu-by-state-but-finding-the-maximum-abv-ibu-beers-can-also-be-valuable." class="section level1">
+<h1>Medians are a great way to observe ABV &amp; IBU by state, but finding the maximum ABV &amp; IBU beers can also be valuable.</h1>
+<pre><code>## [1] &quot;State with the maximum alcoholic beer: CO, with an alcohol percentage of 12.8%&quot;</code></pre>
+<pre><code>## [1] &quot;State with the maximum bitterness: OR, with an IBU of 138&quot;</code></pre>
+<div id="observing-the-distribution-of-abv-it-can-be-seen-that-most-abv-fall-into-the-5-6-range." class="section level2">
+<h2>Observing the distribution of ABV, it can be seen that most ABV fall into the 5-6% range.</h2>
+</div>
+<div id="furthermore-there-seems-to-be-a-pretty-strong-relationship-between-abv-and-ibu.-this-is-most-likely-because" class="section level2">
+<h2>Furthermore, there seems to be a pretty strong relationship between ABV and IBU. This is most likely because</h2>
+</div>
+<div id="higher-concentrations-of-ingredients-such-as-hops-are-needed-to-produce-higher-alcohol-beers-resulting-in-higher-alcohol-and-higher-bitterness." class="section level2">
+<h2>higher concentrations of ingredients (such as hops) are needed to produce higher alcohol beers, resulting in higher alcohol and higher bitterness.</h2>
+</div>
+</div>
+<div id="this-strong-relationship-allows-for-the-construction-of-a-prediction-engine-to-predict-ibu-given-abv-which-will-be-shown-at-the-end-of-the-document." class="section level1">
+<h1>This strong relationship allows for the construction of a prediction engine to predict IBU given ABV, which will be shown at the end of the document.</h1>
+<p><img src="ds6306_cs1_files/figure-html/Distributions%20and%20Relationship-1.png" width="672" /><img src="ds6306_cs1_files/figure-html/Distributions%20and%20Relationship-2.png" width="672" /><img src="ds6306_cs1_files/figure-html/Distributions%20and%20Relationship-3.png" width="672" /></p>
+</div>
+<div id="this-word-cloud-shows-the-most-common-words-in-beer-names.-it-is-an-interesting-graphic-showing-how-popular-ipa-is-in-the-name-of-a-beer." class="section level1">
+<h1>This word cloud shows the most common words in beer names. It is an interesting graphic showing how popular IPA is in the name of a # beer.</h1>
+<p><img src="ds6306_cs1_files/figure-html/Simple%20Wordcloud%20of%20Beer%20Names!-1.png" width="672" /></p>
+<div id="since-ipas-generally-have-high-hop-contents-and-relatively-high-alcoholic-content-it-is-possible-to-predict-whether-a-beer-is-an-ipa-given-abv-and-ibu." class="section level2">
+<h2>Since IPAs generally have high hop contents and relatively high alcoholic content, it is possible to predict whether a beer is an IPA given ABV and IBU.</h2>
+</div>
+<div id="leveraging-a-machine-learning-algorithm-called-k-nearest-neighbors-the-results-are-promising---nearly-a-99-prediction-accuracy." class="section level2">
+<h2>Leveraging a machine learning algorithm called “K Nearest Neighbors,” the results are promising - nearly a 99% prediction accuracy.</h2>
+</div>
+</div>
+<div id="the-knn-k-nearest-neighbors-algorithm-looks-at-the-k-closest-points-to-a-new-point" class="section level1">
+<h1>The KNN (K Nearest Neighbors) algorithm looks at the ‘k’ closest points to a new point</h1>
+<p>#‘K’ is specified by the analyst and different values of ‘k’ can have different results # New data points are evaluated by the class of the points closest to them # The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k. # The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs <img src="ds6306_cs1_files/figure-html/KNN%20Prediction%20of%20IPA-1.png" width="672" /></p>
+<pre><code>## [1] &quot;Confusion Matrix of Ale Classification&quot;</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##               
+## knn_model_Ales   0   1
+##              0 205   1
+##              1   2  73
+##                                           
+##                Accuracy : 0.9893          
+##                  95% CI : (0.9691, 0.9978)
+##     No Information Rate : 0.7367          
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.9726          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1               
+##                                           
+##             Sensitivity : 0.9903          
+##             Specificity : 0.9865          
+##          Pos Pred Value : 0.9951          
+##          Neg Pred Value : 0.9733          
+##              Prevalence : 0.7367          
+##          Detection Rate : 0.7295          
+##    Detection Prevalence : 0.7331          
+##       Balanced Accuracy : 0.9884          
+##                                           
+##        &#39;Positive&#39; Class : 0               
+## </code></pre>
+<div id="since-ales-generally-have-high-hop-contents-and-relatively-high-alcoholic-content-it-is-possible-to-predict-whether-a-beer-is-an-ale-given-abv-and-ibu." class="section level2">
+<h2>Since Ales generally have high hop contents and relatively high alcoholic content, it is possible to predict whether a beer is an Ale given ABV and IBU.</h2>
+</div>
+<div id="leveraging-a-machine-learning-algorithm-called-k-nearest-neighbors-the-results-are-promising---nearly-a-99-prediction-accuracy.-1" class="section level2">
+<h2>Leveraging a machine learning algorithm called “K Nearest Neighbors,” the results are promising - nearly a 99% prediction accuracy.</h2>
+</div>
+</div>
+<div id="the-knn-k-nearest-neighbors-algorithm-looks-at-the-k-closest-points-to-a-new-point-1" class="section level1">
+<h1>The KNN (K Nearest Neighbors) algorithm looks at the ‘k’ closest points to a new point</h1>
+</div>
+<div id="k-is-specified-by-the-analyst-and-different-values-of-k-can-have-different-results" class="section level1">
+<h1>‘K’ is specified by the analyst and different values of ‘k’ can have different results</h1>
+</div>
+<div id="new-data-points-are-evaluated-by-the-class-of-the-points-closest-to-them" class="section level1">
+<h1>New data points are evaluated by the class of the points closest to them</h1>
+</div>
+<div id="the-graph-ostensibly-shows-how-many-similar-points-each-new-beer-must-be-compared-to-to-generate-a-prediction-k-and-the-accuracy-of-each-k." class="section level1">
+<h1>The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k.</h1>
+</div>
+<div id="the-fact-that-knn-predicts-both-ipa-and-ales-very-strongly-shows-that-there-is-a-different-in-ibuabv-values-for-ales-and-ipas" class="section level1">
+<h1>The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs</h1>
+<p><img src="ds6306_cs1_files/figure-html/KNN%20Prediction%20of%20Ales%20That%20Are%20Not%20IPA-1.png" width="672" /></p>
+<pre><code>## [1] &quot;Confusion Matrix of Ale Classification&quot;</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##               
+## knn_model_Ales   0   1
+##              0 170   3
+##              1   0 108
+##                                           
+##                Accuracy : 0.9893          
+##                  95% CI : (0.9691, 0.9978)
+##     No Information Rate : 0.605           
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.9776          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.2482          
+##                                           
+##             Sensitivity : 1.0000          
+##             Specificity : 0.9730          
+##          Pos Pred Value : 0.9827          
+##          Neg Pred Value : 1.0000          
+##              Prevalence : 0.6050          
+##          Detection Rate : 0.6050          
+##    Detection Prevalence : 0.6157          
+##       Balanced Accuracy : 0.9865          
+##                                           
+##        &#39;Positive&#39; Class : 0               
+## </code></pre>
+<div id="almost-42-of-all-beers-are-missing-an-ibu-value" class="section level2">
+<h2>Almost 42% of all beers are missing an IBU value</h2>
+</div>
+</div>
+<div id="using-machine-learning-techniques-it-is-possible-to-build-an-automated-prediction-engine-based-on-beer-type-abv-and-location." class="section level1">
+<h1>Using machine learning techniques, it is possible to build an automated prediction engine, based on beer type, ABV and location.</h1>
+</div>
+<div id="the-process-leverages-multiple-machine-learning-algorithms-and-compares-the-results-at-the-end.-the-model-with-the-best-explanatory-power" class="section level1">
+<h1>The process leverages multiple machine learning algorithms and compares the results at the end. The model with the best explanatory power</h1>
+</div>
+<div id="is-then-chosen-to-predict-the-missing-ibu-values." class="section level1">
+<h1>is then chosen to predict the missing IBU values.</h1>
+</div>
+<div id="after-each-model-a-predicted-vs.-actual-scatter-plot-is-provided-to-show-how-well-the-model-predicts-values." class="section level1">
+<h1>After each model, a predicted vs. actual scatter plot is provided to show how well the model predicts values.</h1>
+<p><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-1.png" width="672" /><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-2.png" width="672" /><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-3.png" width="672" /></p>
+<pre><code>##    user  system elapsed 
+##   26.19    1.15   27.36</code></pre>
+<p><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-4.png" width="672" /></p>
+<pre><code>## Bootstrap sampling is being applied, p=0.1 argument is ignored 
+## running: regression cross-validation with 10 iterations 
+## running iteration: 1 
+## running iteration: 2 
+## running iteration: 3 
+## running iteration: 4 
+## running iteration: 5 
+## running iteration: 6 
+## running iteration: 7 
+## running iteration: 8 
+## running iteration: 9 
+## running iteration: 10</code></pre>
+<pre><code>## Fit MSE = 177.0874 
+## Fit percent variance explained = 74.3 
+## Median permuted MSE = 5.436625 
+## Median permuted percent variance explained = 99.205 
+## Median cross-validation RMSE = 3.397972 
+## Median cross-validation MBE = 0.3284223 
+## Median cross-validation MAE = 2.045819 
+## Range of ks p-values = 0.01370737 0.4701478 
+## Range of ks D statistic = 0.04218362 0.07785888 
+## RMSE cross-validation error variance = 0.1684925 
+## MBE cross-validation error variance = 0.2296594 
+## MAE cross-validation error variance = 0.03790809</code></pre>
+<pre><code>## [14:21:09] INFO: amalgamation/../src/tree/updater_prune.cc:101: tree pruning end, 46 extra nodes, 0 pruned nodes, max_depth=8
+## [1]  train-rmse:12.566269 
+## [14:21:09] INFO: amalgamation/../src/tree/updater_prune.cc:101: tree pruning end, 528 extra nodes, 0 pruned nodes, max_depth=20
+## [2]  train-rmse:10.206293</code></pre>
+<p><img src="ds6306_cs1_files/figure-html/ML%20Pipeline-5.png" width="672" /></p>
+<div id="final-accuracies.-rmse-is-how-much-the-average-prediction-is-off-by." class="section level3">
+<h3>Final accuracies. RMSE Is how much the average prediction is “off” by.</h3>
+</div>
+<div id="the-random-forest-is-chosen-as-the-optimal-model." class="section level2">
+<h2>The Random Forest is chosen as the optimal model.</h2>
+</div>
+</div>
+<div id="the-random-forest-is-an-ensemble-model-that-at-least-in-some-ways-mimics-the-classic-adage-of-wisdom-of-crowds." class="section level1">
+<h1>The random forest is an ensemble model that, at least in some ways, mimics the classic adage of “Wisdom of Crowds.”</h1>
+</div>
+<div id="a-random-forest-is-a-collection-of-decision-trees-each-one-being-trained-on-a-different-bootstrap-sample-of-data-or-a-random-sample-with-replacement." class="section level1">
+<h1>A random forest is a collection of decision trees, each one being trained on a different “Bootstrap Sample” of data, or a random sample with replacement.</h1>
+</div>
+<div id="additionally-at-each-bootstrap-sample-a-subset-of-features-can-be-selected." class="section level1">
+<h1>Additionally, at each bootstrap sample, a subset of features can be selected.</h1>
+</div>
+<div id="so-at-each-decision-tree-a-random-sample-of-rows-and-columns-is-selected-and-a-model-is-built." class="section level1">
+<h1>So at each decision tree, a random sample of rows AND columns is selected and a model is built.</h1>
+</div>
+<div id="each-trees-output-is-then-averaged-to-make-a-final-prediction." class="section level1">
+<h1>Each tree’s output is then averaged to make a final prediction.</h1>
+<pre><code>##    xg_rmse  rf_rmse  lm_rmse noskill_rmse
+## 1 10.03874 9.586835 9.628729     21.34206</code></pre>
+<p>Using the optimal model (Random Forest) to predict all NA’s in the original IBU data <img src="ds6306_cs1_files/figure-html/Predictions-1.png" width="672" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
