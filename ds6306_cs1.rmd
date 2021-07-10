@@ -104,9 +104,9 @@ paste0("State with the maximum bitterness: ", df[which.max(df$IBU), ]$State, ", 
 ```
 
 ### Observing the distribution of ABV, it can be seen that most ABV fall into the 5-6% range.
-### Furthermore, there seems to be a pretty strong relationship between ABV and IBU. This is most likely because 
-### higher concentrations of ingredients (such as hops) are needed to produce higher alcohol beers, resulting in higher alcohol and higher bitterness.
-### This strong relationship allows for the construction of a prediction engine to predict IBU given ABV, which will be shown at the end of the document.
+Furthermore, there seems to be a pretty strong relationship between ABV and IBU. This is most likely because 
+higher concentrations of ingredients (such as hops) are needed to produce higher alcohol beers, resulting in higher alcohol and higher bitterness.
+This strong relationship allows for the construction of a prediction engine to predict IBU given ABV, which will be shown at the end of the document.
 ```{r Distributions and Relationship, echo=FALSE, message=FALSE, warning=FALSE}
 # Distribution of ABV
 ## Part 6
@@ -187,12 +187,12 @@ f = as.formula(IBU ~ ABV*IPA + Stout + APA + Porter + Lager + Blonde +
 
 
 ## Since IPAs generally have high hop contents and relatively high alcoholic content, it is possible to predict whether a beer is an IPA given ABV and IBU.
-## Leveraging a machine learning algorithm called "K Nearest Neighbors," the results are promising - nearly a 99% prediction accuracy.
-### The KNN (K Nearest Neighbors) algorithm looks at the 'k' closest points to a new point
-###'K' is specified by the analyst and different values of 'k' can have different results
-### New data points are evaluated by the class of the points closest to them
-### The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k.
-### The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs
+Leveraging a machine learning algorithm called "K Nearest Neighbors," the results are promising - nearly a 99% prediction accuracy.
+The KNN (K Nearest Neighbors) algorithm looks at the 'k' closest points to a new point
+'K' is specified by the analyst and different values of 'k' can have different results
+New data points are evaluated by the class of the points closest to them
+The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k.
+The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs
 ```{r KNN Prediction of IPA, echo=FALSE, message=FALSE, warning=FALSE}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 #      KNN - ABV/IBU ~ IPA/Other Ales        #
@@ -235,12 +235,12 @@ confusionMatrix(table(knn_model_Ales, knn_test$IPA))
 ```
 
 ## Since Ales generally have high hop contents and relatively high alcoholic content, it is possible to predict whether a beer is an Ale given ABV and IBU.
-## Leveraging a machine learning algorithm called "K Nearest Neighbors," the results are promising - nearly a 99% prediction accuracy.
-### The KNN (K Nearest Neighbors) algorithm looks at the 'k' closest points to a new point
-### 'K' is specified by the analyst and different values of 'k' can have different results
-### New data points are evaluated by the class of the points closest to them
-### The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k.
-### The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs
+Leveraging a machine learning algorithm called "K Nearest Neighbors," the results are promising - nearly a 99% prediction accuracy.
+The KNN (K Nearest Neighbors) algorithm looks at the 'k' closest points to a new point
+'K' is specified by the analyst and different values of 'k' can have different results
+New data points are evaluated by the class of the points closest to them
+The graph ostensibly shows how many similar points each new beer must be compared to to generate a prediction (k), and the accuracy of each k.
+The fact that KNN predicts both IPA and Ales very strongly shows that there is a different in IBU/ABV values for Ales and IPAs
 ```{r KNN Prediction of Ales That Are Not IPA, echo=FALSE, message=FALSE, warning=FALSE}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 #      KNN - ABV/IBU ~ IPA/Other Ales        #
@@ -282,11 +282,11 @@ paste0("Confusion Matrix of Ale Classification")
 confusionMatrix(table(knn_model_Ales, knn_test$Ale_but_not_IPA))
 ```
 
-## Almost 42% of all beers are missing an IBU value
-### Using machine learning techniques, it is possible to build an automated prediction engine, based on beer type, ABV and location.
-### The process leverages multiple machine learning algorithms and compares the results at the end. The model with the best explanatory power
-### is then chosen to predict the missing IBU values.
-### After each model, a predicted vs. actual scatter plot is provided to show how well the model predicts values.
+## Almost 42% of all beers are missing an IBU value.
+Using machine learning techniques, it is possible to build an automated prediction engine, based on beer type, ABV and location.
+The process leverages multiple machine learning algorithms and compares the results at the end. The model with the best explanatory power
+is then chosen to predict the missing IBU values.
+After each model, a predicted vs. actual scatter plot is provided to show how well the model predicts values.
 ```{r ML Pipeline, echo=FALSE, message=FALSE, warning=FALSE}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 #           Baseline - No Skill              #
@@ -420,12 +420,12 @@ xg_train_rmse <-  data.frame(actuals = test$IBU,
 
 
 ## Final accuracies. RMSE Is how much the average prediction is "off" by. 
-### The Random Forest is chosen as the optimal model.
-### The random forest is an ensemble model that, at least in some ways, mimics the classic adage of "Wisdom of Crowds."
-### A random forest is a collection of decision trees, each one being trained on a different "Bootstrap Sample" of data, or a random sample with replacement.
-### Additionally, at each bootstrap sample, a subset of features can be selected.  
-### So at each decision tree, a random sample of rows AND columns is selected and a model is built. 
-### Each tree's output is then averaged to make a final prediction.
+The Random Forest is chosen as the optimal model.
+The random forest is an ensemble model that, at least in some ways, mimics the classic adage of "Wisdom of Crowds."
+A random forest is a collection of decision trees, each one being trained on a different "Bootstrap Sample" of data, or a random sample with replacement.
+Additionally, at each bootstrap sample, a subset of features can be selected.  
+So at each decision tree, a random sample of rows AND columns is selected and a model is built. 
+Each tree's output is then averaged to make a final prediction.
 ```{r Model Accuracies, echo=FALSE, message=FALSE, warning=FALSE}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 #               Final Results!              #
