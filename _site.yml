@@ -1,0 +1,10 @@
+name: "Joe's Github Page"
+navbar: 
+  title: "Joe's Github Page"
+  left:
+    - text: "Home Page"
+      href: index.html
+    - text: "About Me"
+      href: about.html
+    - text: "Case Study 1"
+      href: ds6306_cs1.html
